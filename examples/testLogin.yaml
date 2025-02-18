@@ -1,0 +1,17 @@
+context: {}
+desc: aaaaa
+steps:
+- assert_options:
+  - errorMsg: code不等于0
+    target: '0'
+    type: 等于
+    value: ' $.code'
+  data:
+    accounts: sanfeng
+    pwd: sanfeng
+    type: username
+  extract_options:
+  - target: $.data.token
+    varname: token
+  method: POST
+  url: http://shop-xo.hctestedu.com:80/index.php?s=/api/user/login&application=app
