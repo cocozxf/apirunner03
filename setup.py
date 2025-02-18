@@ -9,7 +9,7 @@ setuptools.setup(
     # 关于项目的介绍 - 随便写都可以
     name="ApiRunner",
     version="0.0.1",
-    author="hctestedu.com",
+    author="cocozxf",
     author_email="zhangfeng0103@live.com",
     description="api 接口自动化测试工具",
     license="GPLv3",
