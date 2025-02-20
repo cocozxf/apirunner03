@@ -29,7 +29,7 @@ def execute(caseinfo):
                                     method=step.get("method", None),
                                     params=step.get("params", None),
                                     data=step.get("data", None),
-                                    json=step.get("json", None),
+                                    json=json.loads(step.get("json", None)),
                                     headers=step.get("headers", None),
                                     cookies=context.get(f"{step.get('cookie_name')}", None),
                                     timeout=step.get("timeout", None))

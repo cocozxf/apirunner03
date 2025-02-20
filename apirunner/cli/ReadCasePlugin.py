@@ -1,6 +1,7 @@
 import copy
 import os
 
+import pytest
 import yaml
 from yamlinclude import YamlIncludeConstructor
 
@@ -29,6 +30,17 @@ class ReadCasePlugin:
 
         with open(file_name) as yamlfile:
             return yaml.load(yamlfile)
+
+    def pytest_collectstart(collector):
+        protected_dirs = [
+            "C:\\Documents and Settings",
+            "C:\\System Volume Information",
+            "C:\\ProgramData"
+        ]
+        if hasattr(collector, "path"):
+            for protected_dir in protected_dirs:
+                if str(collector.path).startswith(protected_dir):
+                    pytest.skip(f"Skipping protected directory: {collector.path}")
 
     def pytest_configure(self, config):
         """
