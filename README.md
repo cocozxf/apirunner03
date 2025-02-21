@@ -26,5 +26,9 @@
 * 【还是需要打开项目运行python代码】
   * 有没有办法，不需要开发环境，仅需安装python运行环境即可 实现工具运行？
   * setuptools
-  * `python setup.py install` 生成
-  * celery -A app.my_celery worker -l INFO -P eventlet
+  * 项目根目录下运行
+  * python setup.py install 生成 windows可执行命令
+  * pip install .   linux下生成可执行命令 
+  * 删除可执行命令
+  * pip uninstall ApiRunner
+  
