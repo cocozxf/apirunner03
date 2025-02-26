@@ -42,6 +42,11 @@ class ReadCasePlugin:
                 if str(collector.path).startswith(protected_dir):
                     pytest.skip(f"Skipping protected directory: {collector.path}")
 
+    def pytest_collection_modifyitems(self, items):
+        for item in items:
+            item.name = item.name.encode("utf-8").decode("unicode_escape")
+            item._nodeid = item.nodeid.encode("utf-8").decode("unicode_escape")
+
     def pytest_configure(self, config):
         """
         pytest配置过程中，把用例数据读取到DataCenter对象里面去
@@ -57,11 +62,11 @@ class ReadCasePlugin:
         # 读取指定文件夹下的yaml文件
         for yfile in os.listdir(config_path):
             # 如果不是以test开头，yaml文件后缀，则不处理该文件
-            if not yfile.startswith("test") or not yfile.endswith("yaml") :
+            if not yfile.startswith("test") or not yfile.endswith("yaml"):
                 continue
 
             # 每个文件里面描述一个业务场景 - 一个场景可能由多组数据测试组成多个测试用例
-            rfile = open(os.path.join(config_path,yfile), "r", encoding='utf-8')
+            rfile = open(os.path.join(config_path, yfile), "r", encoding='utf-8')
             caseinfo = yaml.full_load(rfile)
             rfile.close()
             # 读取DDT节点 --- 生成多组测试用例，交个pytest去执行
@@ -69,9 +74,10 @@ class ReadCasePlugin:
             if len(ddts) > 0:
                 caseinfo.pop("ddts")
 
-            if len(ddts) == 0 :
+            if len(ddts) == 0:
                 DataCenter.caseinfos.append(caseinfo)
-                DataCenter.ids.append(yfile)
+                taskname = caseinfo.get("desc", "").encode("utf-8").decode("utf-8")
+                DataCenter.ids.append(taskname)
             else:
                 # 循环生成多个用例执行对象，保存起来。
                 for ddt in ddts:

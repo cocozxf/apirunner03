@@ -24,12 +24,18 @@ def execute(caseinfo):
                 step.update({key: obj})
 
         print("请求信息: ", step)
+        tmpjson = None
+        if type(step.get("json", None)) == str:
+            tmpjson = json.loads(step.get("json", None))
+        if type(step.get("json", None)) == dict:
+            tmpjson = step.get("json", None)
+
         # 2. 具体发起请求进行操作 ，发起HTTP请求，进行返回结果断言
         response = requests.request(url=step.get("url", None),
                                     method=step.get("method", None),
                                     params=step.get("params", None),
                                     data=step.get("data", None),
-                                    json=json.loads(step.get("json", None)),
+                                    json=tmpjson,
                                     headers=step.get("headers", None),
                                     cookies=context.get(f"{step.get('cookie_name')}", None),
                                     timeout=step.get("timeout", None))

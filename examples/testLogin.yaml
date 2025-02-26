@@ -1,5 +1,5 @@
 context: {}
-desc: aaaaa
+desc: 测试001
 steps:
 - assert_options:
   - errorMsg: code不等于0

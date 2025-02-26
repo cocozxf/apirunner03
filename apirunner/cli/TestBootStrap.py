@@ -1,8 +1,10 @@
+import os
+
 import pytest
 
 from apirunner.ApiTestFramework.ApiExecutor import execute
 from apirunner.cli.DataCenter import DataCenter
-
+os.environ["PYTHONIOENCODING"] = "utf-8"
 
 class TestBootStrap:
     # pytest 参数化 - 由它去完成多组用例的执行

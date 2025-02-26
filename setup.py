@@ -29,7 +29,7 @@ setuptools.setup(
     # 需要安装的依赖 -- 工具依赖
     install_requires=[
         "pytest",
-        "pytest-html",
+        'pytest-html',
         "jsonpath",
         "PyYAML",
         "pyyaml-include",
