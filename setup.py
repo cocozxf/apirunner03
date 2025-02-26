@@ -6,7 +6,6 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    # 关于项目的介绍 - 随便写都可以
     name="ApiRunner",
     version="0.0.1",
     author="cocozxf",
@@ -24,7 +23,6 @@ setuptools.setup(
         "License :: OSI Approved :: GNU General Public License (GPL)",
         "Operating System :: OS Independent",
     ],
-    # 需要安装的依赖 -- 工具依赖
     install_requires=[
         "pytest",
         'pytest-html',
@@ -36,7 +34,6 @@ setuptools.setup(
     packages=setuptools.find_packages(),
 
     python_requires=">=3.6",
-    # 生成一个 可执行文件 例如 windows下面 .exe
     entry_points={
         'console_scripts': [
             # 可执行文件的名称=执行的具体代码方法
