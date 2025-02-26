@@ -10,15 +10,13 @@ setuptools.setup(
     name="ApiRunner",
     version="0.0.1",
     author="cocozxf",
-    author_email="zhangfeng0103@live.com",
+    author_email="154016994@qq.com",
     description="api 接口自动化测试工具",
     license="GPLv3",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="http://www.hctestedu.com",
     project_urls={
-        "Bug Tracker": "https://github.com/crazyFeng/api-runner/issues",
-        "Contact Us": "http://www.hctestedu.com",
+        "Bug Tracker": "https://github.com/cocozxf/apirunner03"
     },
 
     classifiers=[
